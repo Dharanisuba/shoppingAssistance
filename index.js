@@ -10,6 +10,7 @@ var app = express();
 
 const WELCOME_INTENT = 'input.welcome';
 const PRINTER = 'input.printer';
+const HOMEUSE="input.homeuse";
 
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
@@ -25,7 +26,8 @@ app.post('/helloHttp', function(request, response) {
   const actionMap = new Map();
   actionMap.set(WELCOME_INTENT, welcomeIntent);
   actionMap.set(PRINTER, buyPrinter);
-
+   actionMap.set(HOMEUSE,printerUse);
+	
   appAi.handleRequest(actionMap);
 });
 
@@ -52,5 +54,7 @@ function buyPrinter (appAi) {
   appAi.ask('Sure, I can help you with that. \nDo you want this for home use or office use?');
 
 }
-
+function printerUse(appAi){
+   appAi.ask('Cool. Would you print a lot every day? Like more than 50 pages per week i.e moderate use or regular use?');
+}
 module.exports = app;
