@@ -11,6 +11,7 @@ var app = express();
 const WELCOME_INTENT = 'input.welcome';
 const PRINTER = 'input.printer';
 const HOMEUSE="input.homeuse";
+const SCAN="input.scan";
 
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
@@ -26,7 +27,8 @@ app.post('/helloHttp', function(request, response) {
   const actionMap = new Map();
   actionMap.set(WELCOME_INTENT, welcomeIntent);
   actionMap.set(PRINTER, buyPrinter);
-   actionMap.set(HOMEUSE,printerUse);
+  actionMap.set(HOMEUSE,printerUse);
+  actionMap.set(SCAN,scanPrinter);
 	
   appAi.handleRequest(actionMap);
 });
@@ -57,4 +59,5 @@ function buyPrinter (appAi) {
 function printerUse(appAi){
    appAi.ask('Cool. Would you print a lot every day? Like more than 50 pages per week i.e moderate use or regular use?');
 }
+
 module.exports = app;
