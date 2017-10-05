@@ -12,6 +12,7 @@ const WELCOME_INTENT = 'input.welcome';
 const PRINTER = 'input.printer';
 const HOMEUSE="input.homeuse";
 const SCAN="input.scan";
+const WIFI="input.wifi";
 
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
@@ -29,6 +30,7 @@ app.post('/helloHttp', function(request, response) {
   actionMap.set(PRINTER, buyPrinter);
   actionMap.set(HOMEUSE,printerUse);
   actionMap.set(SCAN,scanPrinter);
+  actionMap.set(WIFI,wifiPrinter);
 	
   appAi.handleRequest(actionMap);
 });
@@ -59,5 +61,7 @@ function buyPrinter (appAi) {
 function printerUse(appAi){
    appAi.ask('Cool. Would you print a lot every day? Like more than 50 pages per week i.e moderate use or regular use?');
 }
-
+function wifiPrinter(appAi){
+  appAi.ask('Do you want  the printer to print over the WiFi?');	
+}
 module.exports = app;
