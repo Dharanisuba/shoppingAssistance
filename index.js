@@ -25,7 +25,7 @@ app.post('/helloHttp', function(request, response) {
   const actionMap = new Map();
   actionMap.set(WELCOME_INTENT, welcomeIntent);
   actionMap.set(PRINTER, buyPrinter);
-  actionMap.set(PRINTER, scanPrinter);
+
   appAi.handleRequest(actionMap);
 });
 
