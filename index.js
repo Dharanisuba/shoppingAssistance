@@ -44,19 +44,6 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-app.get('/webhook', function(req, res) {
-  if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === <EAAG5m0TJFqYBAHlQkWRcZAel8ecmX1cSe9SBmlvsGHpAwrEniXE8OCX1uaZAOjLpkGF2PtZBtSadogpDbOJQN4LgZAV0DZBptwhROgIZC3cGrqa8X5MltvJtKb1niOHuSfMJzOT29sC0G2yoZBjlVutaz3nNTKLw4kLL1b4tlZCEa0OhWAH6RGTQ>) {
-    console.log("Validating webhook");
-    res.status(200).send(req.query['hub.challenge']);
-  } else {
-    console.error("Failed validation. Make sure the validation tokens match.");
-    res.sendStatus(403);          
-  }  
-});
-
-
 function welcomeIntent (appAi) {
   appAi.tell('I am your BestBuy virtual In-Home Assistant. I can help you choose your home appliances. How may I help you today?');
 
