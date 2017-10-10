@@ -12,7 +12,7 @@ const WELCOME_INTENT = 'input.welcome';
 const PRINTER = 'input.printer';
 const HOMEUSE="input.homeuse";
 const SCAN="input.scan";
-const WIFI="scan.scan-yes";
+const WIFI="input.wifi";
 
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
