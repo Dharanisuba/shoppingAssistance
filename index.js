@@ -32,7 +32,7 @@ app.post('/helloHttp', function(request, response) {
   var req = request.body;
   console.log("\nReq: \n", req);
 
-  data = req.originalRequest.data;
+ /* data = req.originalRequest.data;
   console.log("\ndata: \n", data);
   var result = req.result;
   //console.log("result", result);
@@ -40,7 +40,7 @@ app.post('/helloHttp', function(request, response) {
     console.log("Context: ", result.contexts[i]);
   }
   senderID = data.sender.id;
-  console.log("SenderID: ", senderID);
+  console.log("SenderID: ", senderID);*/
 	
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
