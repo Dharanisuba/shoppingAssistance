@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 
-const PAGE_ACCESS_TOKEN = 'EAABsZACZBoOH4BAOcobE9Vu5Q0LlBL0b7O0duqNkYBpFFXoZBGUXoacs6s14ZAxOUZCdL1Nryyw5cAGWpJpoZCVoR5CE2ZB35I7zKNKne59O4xAsXimAX5oC9nQZBFHtG5EB1j5bJrCwiPUmxNskgPR2ju7RGxgkn5rXtqXiZBZADCPgZDZD';
+const PAGE_ACCESS_TOKEN = 'EAAG5m0TJFqYBAEwcrYkiJDxhWUKZAAyZAQxqSXd9HYDmvGc6ABY0qjIRbhLzbEDSzGv99AGQztyyIuDhjL8t9vij3DHTyeA6HdZC79l4qd9IsabOKaBBZCdylUTU8XXwncfe7ckWJVV8lAg4lv5DAMh5ZBWtrh4TdSX3xtjf0iAZDZD';
 var senderID = '';
 var data = '';
 var url = 'https://graph.facebook.com/v2.6/me/messages';
