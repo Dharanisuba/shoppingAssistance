@@ -18,7 +18,8 @@ app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(express.static('public'));
-const PAGE_ACCESS_TOKEN = 'PytlcJWiPp0MQHCZBEJgQeZAGL5EAAG5m0TJFqYBAMiTaT9ZAVKR84WMW1RmwEmd5EZBHf5HXfEqWGyA7N0trjtApKNIKBWzZAwFLsVOOVSbUp52XwI948ZCR1VG1dpzQ0dxlmMf4KhW37mLZBxPxl62aDX9G3prAOx4MCKx4Deb8n1fVwQfns4d';
+const PAGE_ACCESS_TOKEN = 'EAAG5m0TJFqYBAEwcrYkiJDxhWUKZAAyZAQxqSXd9HYDmvGc6ABY0qjIRbhLzbEDSzGv99AGQztyyIuDhjL8t9vij3DHTyeA6HdZC79l4qd9IsabOKaBBZCdylUTU8XXwncfe7ckWJVV8lAg4lv5DAMh5ZBWtrh4TdSX3xtjf0iAZDZD
+';
 var senderID = '';
 var data = '';
 
