@@ -46,6 +46,7 @@ console.log("\ndata: \n", data);
   //console.log("result", result);
   for(var i=0; i<result.contexts.length; i++) {
     console.log("Context: ", result.contexts[i]);
+  }	  
 });
 senderID = data.sender.id;
 console.log("SenderID: ", senderID);
