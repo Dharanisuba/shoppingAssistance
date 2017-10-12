@@ -29,8 +29,7 @@ app.use(express.static('public'));
 */
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
-  var req = request.body;	
-  data = req.originalRequest.data;	
+	
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
   
