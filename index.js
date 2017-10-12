@@ -40,10 +40,8 @@ app.post('/helloHttp', function(request, response) {
   actionMap.set(WIFI,wifiPrinter);
   data = request.originalRequest.data;
   appAi.handleRequest(actionMap);
- 
-});
-senderID = data.sender.id;
-console.log("SenderID: ", senderID);
+ });
+
 app.get('/', function(request, response) {
 	console.log("Inside get");
   console.log("New deployment method")
