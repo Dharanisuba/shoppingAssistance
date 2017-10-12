@@ -14,6 +14,11 @@ const HOMEUSE="input.homeuse";
 const SCAN="input.scan";
 const WIFI="input.wifi";
 
+const PAGE_ACCESS_TOKEN = 'EAAG5m0TJFqYBAEwcrYkiJDxhWUKZAAyZAQxqSXd9HYDmvGc6ABY0qjIRbhLzbEDSzGv99AGQztyyIuDhjL8t9vij3DHTyeA6HdZC79l4qd9IsabOKaBBZCdylUTU8XXwncfe7ckWJVV8lAg4lv5DAMh5ZBWtrh4TdSX3xtjf0iAZDZD';
+var senderID = '';
+var data = '';
+var url = 'https://graph.facebook.com/v2.6/me/messages';
+
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
@@ -23,15 +28,30 @@ app.use(express.static('public'));
 * HTTP Cloud Function.
 */
 app.post('/helloHttp', function(request, response) {
-  console.log("Inside /helloHttp");
+console.log("Inside /helloHttp");
+  var req = request.body;
+  console.log("\nReq: \n", req);
+
+  data = req.originalRequest.data;
+  console.log("\ndata: \n", data);
+  var result = req.result;
+  //console.log("result", result);
+  for(var i=0; i<result.contexts.length; i++) {
+    console.log("Context: ", result.contexts[i]);
+  }
+  senderID = data.sender.id;
+  console.log("SenderID: ", senderID);
+	
+	
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
-  actionMap.set(WELCOME_INTENT, welcomeIntent);
+  
+   actionMap.set(WELCOME_INTENT, welcomeIntent);
   actionMap.set(PRINTER, buyPrinter);
   actionMap.set(HOMEUSE,printerUse);
   actionMap.set(SCAN,scanPrinter);
   actionMap.set(WIFI,wifiPrinter);
-
+ 
   appAi.handleRequest(actionMap);
 });
 
