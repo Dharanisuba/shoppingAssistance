@@ -27,6 +27,7 @@ app.use(express.static('public'));
 /*
 * HTTP Cloud Function.
 */
+app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body;
   console.log("\nReq: \n", req);
