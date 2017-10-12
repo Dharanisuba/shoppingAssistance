@@ -32,7 +32,8 @@ app.post('/helloHttp', function(request, response) {
   var req = request.body;
   console.log("\nReq: \n", req.id);
 
-
+  data = req.originalRequest.data;
+  console.log("\ndata: \n", data);
 	
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
