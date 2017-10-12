@@ -19,6 +19,13 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+
+const PAGE_ACCESS_TOKEN = 'EAABsZACZBoOH4BAOcobE9Vu5Q0LlBL0b7O0duqNkYBpFFXoZBGUXoacs6s14ZAxOUZCdL1Nryyw5cAGWpJpoZCVoR5CE2ZB35I7zKNKne59O4xAsXimAX5oC9nQZBFHtG5EB1j5bJrCwiPUmxNskgPR2ju7RGxgkn5rXtqXiZBZADCPgZDZD';
+var senderID = '';
+var data = '';
+var url = 'https://graph.facebook.com/v2.6/me/messages';
+
+
 /*
 * HTTP Cloud Function.
 */
@@ -34,6 +41,8 @@ app.post('/helloHttp', function(request, response) {
 
   appAi.handleRequest(actionMap);
 });
+
+
 
 app.get('/', function(request, response) {
 	console.log("Inside get");
@@ -56,7 +65,26 @@ function scanPrinter(appAi) {
 function buyPrinter (appAi) {
   //appAi.tell('Sure, I can help you with that.');
   appAi.ask('Sure, I can help you with that. \nDo you want this for home use or office use?');
-
+ var messageData = {
+    recipient: {
+      id: senderID
+    },
+    "message":{
+      "text": "Sure. I can help you with that. \nHow do you plan on using it?",
+      "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"For Personal use",
+          "payload":"PRINTER_USE_TYPE_PERSONAL"
+        },
+        {
+          "content_type":"text",
+          "title":"For Professional use",
+          "payload":"PRINTER_USE_TYPE_PROFESSIONAL"
+        }]
+    }
+  };	
+callSendAPI(messageData);
 }
 function printerUse(appAi){
    appAi.ask('Cool. Would you print a lot every day? Like more than 50 pages per week i.e moderate use or regular use?');
@@ -65,5 +93,31 @@ function printerUse(appAi){
 function wifiPrinter(appAi){
   appAi.ask('Do you want  the printer to print over the WiFi?');  
 }
+
+
+ function callSendAPI(messageData) {
+    request({
+      uri: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: 'POST',
+      json: messageData
+
+    }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var recipientId = body.recipient_id;
+        var messageId = body.message_id;
+
+        if (messageId) {
+          console.log("Successfully sent message with id %s to recipient %s",
+            messageId, recipientId);
+        } else {
+        console.log("Successfully called Send API for recipient %s",
+          recipientId);
+        }
+      } else {
+        console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
+      }
+    });
+  }
 
 module.exports = app;
