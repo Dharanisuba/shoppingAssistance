@@ -8,20 +8,16 @@ const
   ApiAiApp = require('actions-on-google').ApiAiApp;
 var app = express();
 
-
+const WELCOME_INTENT = 'input.welcome';
 const PRINTER = 'input.printer';
 const HOMEUSE="input.homeuse";
 const SCAN="input.scan";
 const WIFI="input.wifi";
-const WELCOME_INTENT = 'input.welcome';
+
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(express.static('public'));
-
-var senderID = '';
-var data = '';
-
 
 /*
 * HTTP Cloud Function.
@@ -35,19 +31,21 @@ app.post('/helloHttp', function(request, response) {
   actionMap.set(HOMEUSE,printerUse);
   actionMap.set(SCAN,scanPrinter);
   actionMap.set(WIFI,wifiPrinter);
-	
+
   appAi.handleRequest(actionMap);
 });
 
 app.get('/', function(request, response) {
 	console.log("Inside get");
   console.log("New deployment method")
- 
+//  response.sendStatus(200);
 });
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+
 function welcomeIntent (appAi) {
   appAi.tell('I am your BestBuy virtual In-Home Assistant. I can help you choose your home appliances. How may I help you today?');
 
@@ -63,12 +61,9 @@ function buyPrinter (appAi) {
 function printerUse(appAi){
    appAi.ask('Cool. Would you print a lot every day? Like more than 50 pages per week i.e moderate use or regular use?');
 }
-function wifiPrinter(appAi){
-  appAi.ask('Do you want printer with wifi?');
- };
 
-  callSendAPI(messageData);
+function wifiPrinter(appAi){
+  appAi.ask('Do you want  the printer to print over the WiFi?');  
 }
 
- 
 module.exports = app;
