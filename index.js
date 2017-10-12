@@ -8,12 +8,12 @@ const
   ApiAiApp = require('actions-on-google').ApiAiApp;
 var app = express();
 
-const WELCOME_INTENT = 'input.welcome';
+
 const PRINTER = 'input.printer';
 const HOMEUSE="input.homeuse";
 const SCAN="input.scan";
 const WIFI="input.wifi";
-
+const WELCOME_INTENT = 'input.welcome';
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
