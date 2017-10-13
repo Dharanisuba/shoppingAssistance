@@ -15,7 +15,7 @@ const SCAN="input.scan";
 const WIFI="input.wifi";
 
 const PAGE_ACCESS_TOKEN = 'EAAG5m0TJFqYBAEwcrYkiJDxhWUKZAAyZAQxqSXd9HYDmvGc6ABY0qjIRbhLzbEDSzGv99AGQztyyIuDhjL8t9vij3DHTyeA6HdZC79l4qd9IsabOKaBBZCdylUTU8XXwncfe7ckWJVV8lAg4lv5DAMh5ZBWtrh4TdSX3xtjf0iAZDZD';
-var senderID = '';
+cost senderID = '';
 var data = '';
 var url = 'https://graph.facebook.com/v2.6/me/messages';
 
@@ -31,7 +31,7 @@ app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body.id;
   console.log("\nReq: \n", req);
- var senderID=req;
+  senderID=req;
   console.log("\ncheck",senderId);
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
