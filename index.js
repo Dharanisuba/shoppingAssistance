@@ -29,10 +29,10 @@ app.use(express.static('public'));
 */
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
-  var req = request.body.id;
-  console.log("\nReq: \n", req);
-  senderID=req;
-  console.log("\ncheck",senderId);
+  
+  console.log("\nReq: \n", response);
+
+
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
   
