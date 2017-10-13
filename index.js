@@ -131,63 +131,9 @@ function endIntent (appAi) {
   callSendAPI(messageData);
 }
 
-function sendPrinterDetails(recipientId) {
-  console.log("RecipientID: ", recipientId);
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: "HP pro 6978 printer",
-            subtitle: "Printer",
-            item_url: "https://www.bestbuy.com/site/hp-officejet-pro-6978-wireless-all-in-one-instant-ink-ready-printer/5119600.p?skuId=5119600",
-            image_url: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5119/5119600_sd.jpg;maxHeight=550;maxWidth=642",
-            buttons: [{
-              type: "web_url",
-              url: "https://www.bestbuy.com/site/hp-officejet-pro-6978-wireless-all-in-one-instant-ink-ready-printer/5119600.p?skuId=5119600",
-              title: "Open Web URL"
-            }],
-          }]
-        }
-      }
-    }
-  };
-  callSendAPI(messageData);
-  }
 
-  function sendPrinterSelectButton(recipientId) {
-    messageData = {
-      recipient: {
-        id: senderID
-      },
-      "message":{
-        "text": "I found the above for you. \nCan I add it to your cart?",
-        "quick_replies":[
-          {
-            "content_type":"text",
-            "title":"YES",
-            "payload":"ADD_TO_CART_YES"
-          },
-          {
-            "content_type":"text",
-            "title":"NO",
-            "payload":"ADD_TO_CART_NO"
-          },
-          {
-            "content_type":"text",
-            "title":"Show More",
-            "payload":"PRINTER_SELECT_SHOW_MORE"
-          }]
-      }
-    };
-    callSendAPI(messageData);
-  }
 
+  
 function callSendAPI(messageData) {
     request({
       uri: 'https://graph.facebook.com/v2.6/me/messages',
