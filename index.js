@@ -31,9 +31,7 @@ app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body.id;
   console.log("\nReq: \n", req);
-  senderID=req; 
-  
-	
+ 
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
   
