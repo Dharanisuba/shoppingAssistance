@@ -32,7 +32,7 @@ app.post('/helloHttp', function(request, response) {
   var req = request.body;
   console.log("\nReq: \n", req);
 
-   
+  data = req.originalRequest.data;
   console.log("\ndata: \n", data);
   var result = req.result;
   //console.log("result", result);
