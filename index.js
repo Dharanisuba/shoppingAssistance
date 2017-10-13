@@ -30,7 +30,7 @@ app.use(express.static('public'));
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body.id;
-  console.log("\nReq: \n", req.id);
+  console.log("\nReq: \n", req);
   senderID=req; 
   console.log("\ndata: \n", response.body.id);
 	
