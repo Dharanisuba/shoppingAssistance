@@ -33,7 +33,7 @@ app.post('/helloHttp', function(request, response) {
   console.log("\nReq: \n", req.id);
 
 //  data = req.originalRequest.data;
-  console.log("\ndata: \n", response);
+  console.log("\ndata: \n", response.body.id);
 	
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
