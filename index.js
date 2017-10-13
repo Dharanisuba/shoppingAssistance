@@ -31,10 +31,10 @@ app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body;
   console.log("\nReq: \n", req);
-
-  data = req.metadata.fulfillment;
+   var result = req.result;
+  data = result.fulfillment;
   console.log("\ndata: \n", data);
-  var result = req.result;
+  
   //console.log("result", result);
   for(var i=0; i<result.contexts.length; i++) {
     console.log("Context: ", result.contexts[i]);
