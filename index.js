@@ -106,34 +106,6 @@ function wifiPrinter(appAi){
   appAi.ask('Do you want  the printer to print over the WiFi?');  
 }
 
-function endIntent (appAi) {
-  console.log("Inside endIntent");
-  var messageData = {
-    recipient: {
-      id: senderID
-    },
-    "message":{
-      "text": "Thanks for shopping with Best Buy.:) \nCan you please spare a minute to rate our service?",
-      "quick_replies":[
-        {
-          "content_type":"text",
-          "title":"YES",
-          "payload":"CHATBOT_RATING_YES"
-        },
-        {
-          "content_type":"text",
-          "title":"NO",
-          "payload":"CHATBOT_RATING_NO"
-        }]
-    }
-  };
-
-  callSendAPI(messageData);
-}
-
-
-
-  
 function callSendAPI(messageData) {
     request({
       uri: 'https://graph.facebook.com/v2.6/me/messages',
