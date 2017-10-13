@@ -29,10 +29,9 @@ app.use(express.static('public'));
 */
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
-  var req = request.body;
+  var req = request.body.id;
   console.log("\nReq: \n", req.id);
-
-//  data = req.originalRequest.data;
+  senderID=req; 
   console.log("\ndata: \n", response.body.id);
 	
   const appAi = new ApiAiApp({request: request, response: response});
