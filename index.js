@@ -30,7 +30,7 @@ app.use(express.static('public'));
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body;
-  console.log("\nReq: \n", response);
+  console.log("\nReq: \n", request);
    var result = req.result;
   data = result.fulfillment;
   console.log("\ndata: \n", data.sessionId);
