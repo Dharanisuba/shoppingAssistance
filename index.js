@@ -59,6 +59,9 @@ app.get('/', function(request, response) {
   console.log("New deployment method")
 //  response.sendStatus(200);
 });
+app.get('/setupGetStartedButton',function(req,res){
+    setupGetStartedButton(res);
+});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
@@ -104,6 +107,33 @@ function wifiPrinter(appAi){
 }
 
 
+ function setupGetStartedButton(res){
+          var messageData = {
+                  "get_started"://[
+                  {
+                      "payload":"Get Started with Home Electronic Assistance"
+                      }
+                  //]
+          };
+
+          // Start the request
+          request({
+              url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ PAGE_ACCESS_TOKEN,
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              form: messageData
+          },
+          function (error, response, body) {
+              if (!error && response.statusCode == 200) {
+                  // Print out the response body
+                  res.send(body);
+
+              } else {
+                  // TODO: Handle errors
+                  res.send(body);
+              }
+          });
+      }
 
 
 module.exports = app;
