@@ -33,7 +33,7 @@ app.post('/helloHttp', function(request, response) {
   console.log("\nReq: \n", req);
    var result = req.result;
   data = result.fulfillment;
-  console.log("\ndata: \n", data.senderId);
+  console.log("\ndata: \n", data.sessionId);
   
   //console.log("result", result);
   for(var i=0; i<result.contexts.length; i++) {
