@@ -30,7 +30,7 @@ app.use(express.static('public'));
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body;
-  console.log("\nReq: \n", req);
+  console.log("\nReq: \n", response);
    var result = req.result;
   data = result.fulfillment;
   console.log("\ndata: \n", data.sessionId);
@@ -39,7 +39,7 @@ app.post('/helloHttp', function(request, response) {
   for(var i=0; i<result.contexts.length; i++) {
     console.log("Context: ", result.contexts[i]);
   }
-  senderID = data.senderId;
+  //senderID = data.senderId;
 	
   console.log("SenderID: ", senderID);
   const appAi = new ApiAiApp({request: request, response: response});
