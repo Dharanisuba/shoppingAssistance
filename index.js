@@ -39,7 +39,7 @@ app.post('/helloHttp', function(request, response) {
   for(var i=0; i<result.contexts.length; i++) {
     console.log("Context: ", result.contexts[i]);
   }
-  senderID = req.id;
+  senderID = data.senderId;
 	
   console.log("SenderID: ", senderID);
   const appAi = new ApiAiApp({request: request, response: response});
