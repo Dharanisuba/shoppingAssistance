@@ -33,8 +33,7 @@ app.post('/helloHttp', function(request, response) {
   console.log("\nReq: \n", request);
    var result = req.result;
   data = result.fulfillment;
-  console.log("\ndata: \n", data.sessionId);
-  
+   
   //console.log("result", result);
   for(var i=0; i<result.contexts.length; i++) {
     console.log("Context: ", result.contexts[i]);
@@ -42,6 +41,7 @@ app.post('/helloHttp', function(request, response) {
   //senderID = data.senderId;
 	
   console.log("SenderID: ", senderID);
+	
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
   
