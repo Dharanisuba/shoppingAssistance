@@ -15,7 +15,7 @@ const SCAN="input.scan";
 const WIFI="input.wifi";
 const IMG="input.checkit";
 const PAGE_ACCESS_TOKEN = 'EAAG5m0TJFqYBAEwcrYkiJDxhWUKZAAyZAQxqSXd9HYDmvGc6ABY0qjIRbhLzbEDSzGv99AGQztyyIuDhjL8t9vij3DHTyeA6HdZC79l4qd9IsabOKaBBZCdylUTU8XXwncfe7ckWJVV8lAg4lv5DAMh5ZBWtrh4TdSX3xtjf0iAZDZD';
-var senderID = 'a7a790bf-9f97-4862-8198-f7e29a7cb1cd';
+var senderID = '';
 var data = '';
 var url = 'https://graph.facebook.com/v2.6/me/messages';
 
