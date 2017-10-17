@@ -13,7 +13,7 @@ const PRINTER = 'input.printer';
 const HOMEUSE="input.homeuse";
 const SCAN="input.scan";
 const WIFI="input.wifi";
-
+const IMG="input.checkit";
 const PAGE_ACCESS_TOKEN = 'EAAG5m0TJFqYBAEwcrYkiJDxhWUKZAAyZAQxqSXd9HYDmvGc6ABY0qjIRbhLzbEDSzGv99AGQztyyIuDhjL8t9vij3DHTyeA6HdZC79l4qd9IsabOKaBBZCdylUTU8XXwncfe7ckWJVV8lAg4lv5DAMh5ZBWtrh4TdSX3xtjf0iAZDZD';
 var senderID = 'a7a790bf-9f97-4862-8198-f7e29a7cb1cd';
 var data = '';
@@ -50,7 +50,7 @@ app.post('/helloHttp', function(request, response) {
   actionMap.set(HOMEUSE,printerUse);
   actionMap.set(SCAN,scanPrinter);
   actionMap.set(WIFI,wifiPrinter);
- 
+  actionMap.set(IMG,setImage);
   appAi.handleRequest(actionMap);
 });
 
@@ -67,6 +67,32 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
+function setImage(appAi) {
+	const CAT_IMAGE_URL = 'https://botcube.co/public/blog/apiai-tutorial-bot/hosico_cat.jpg';
+
+	const request = require('request');
+
+	module.exports = (event) => {
+	    const senderId = '31da64ca-ee5f-460b-ab84-ba74657c233e';
+	    const message = "I will but it";
+
+	    request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: { access_token: PAGE_ACCESS_TOKEN},
+		method: 'POST',
+		json: {
+		    recipient: { id: senderId },
+		    message: {
+			attachment: {
+			    type: 'image',
+			    payload: { url: CAT_IMAGE_URL}
+			}
+		    }
+		}
+	    });
+	};
+
+}
 
 function welcomeIntent (appAi) {
   appAi.tell('I am your BestBuy virtual In-Home Assistant. I can help you choose your home appliances. How may I help you today?');
