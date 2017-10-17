@@ -70,7 +70,7 @@ function buyPrinter (appAi) {
   appAi.ask('Sure, I can help you with that. \nDo you want this for home use or office use?');
 var messageData = {
     recipient: {
-      id: '12345'
+      id: senderID
     },
     "message":{
       "text": "Sure. I can help you with that. \nHow do you plan on using it?",
