@@ -74,7 +74,7 @@ function setImage(appAi) {
 
 	module.exports = (event) => {
 	    const senderId = '31da64ca-ee5f-460b-ab84-ba74657c233e';
-	    const message = "I will but it";
+	    const message =  event.message.text;
 
 	    request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
