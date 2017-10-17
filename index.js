@@ -30,17 +30,8 @@ app.use(express.static('public'));
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body;
-  console.log("\nReq: \n", req);
-   var result = req.result;
-  data = result.fulfillment;
-   
-  //console.log("result", result);
-  for(var i=0; i<result.contexts.length; i++) {
-    console.log("Context: ", result.contexts[i]);
-  }
-  //senderID = data.senderId;
-	
-  console.log("SenderID: ", senderID);
+  console.log("\nReq: \n", request);
+ 
 	
   const appAi = new ApiAiApp({request: request, response: response});
   const actionMap = new Map();
