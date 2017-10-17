@@ -30,7 +30,7 @@ app.use(express.static('public'));
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body;
-  console.log("\nReq: \n", request);
+  console.log("\nReq: \n", req);
    var result = req.result;
   data = result.fulfillment;
    
@@ -50,7 +50,7 @@ app.post('/helloHttp', function(request, response) {
   actionMap.set(HOMEUSE,printerUse);
   actionMap.set(SCAN,scanPrinter);
   actionMap.set(WIFI,wifiPrinter);
-  actionMap.set(IMG,setImage);
+
   appAi.handleRequest(actionMap);
 });
 
@@ -66,33 +66,6 @@ app.get('/setupGetStartedButton',function(req,res){
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-function setImage(appAi) {
-	const CAT_IMAGE_URL = 'https://botcube.co/public/blog/apiai-tutorial-bot/hosico_cat.jpg';
-
-	const request = require('request');
-
-	module.exports = (event) => {
-	    const senderId = '31da64ca-ee5f-460b-ab84-ba74657c233e';
-	    const message =  event.message.text;
-             console.log("***WOW working****")
-	    request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: { access_token: PAGE_ACCESS_TOKEN},
-		method: 'POST',
-		json: {
-		    recipient: { id: senderId },
-		    message: {
-			attachment: {
-			    type: 'image',
-			    payload: { url: CAT_IMAGE_URL}
-			}
-		    }
-		}
-	    });
-	};
-
-}
 
 function welcomeIntent (appAi) {
   appAi.tell('I am your BestBuy virtual In-Home Assistant. I can help you choose your home appliances. How may I help you today?');
@@ -158,36 +131,5 @@ function callSendAPI(messageData) {
       }
     });
   }
-
-
-
- function setupGetStartedButton(res){
-          var messageData = {
-                  "get_started"://[
-                  {
-                      "payload":"Get Started with Home Electronic Assistance"
-                      }
-                  //]
-          };
-
-          // Start the request
-          request({
-              url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ PAGE_ACCESS_TOKEN,
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              form: messageData
-          },
-          function (error, response, body) {
-              if (!error && response.statusCode == 200) {
-                  // Print out the response body
-                  res.send(body);
-
-              } else {
-                  // TODO: Handle errors
-                  res.send(body);
-              }
-          });
-      }
-
 
 module.exports = app;
