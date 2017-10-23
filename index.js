@@ -30,7 +30,7 @@ app.use(express.static('public'));
 app.post('/helloHttp', function(request, response) {
   console.log("Inside /helloHttp");
   var req = request.body;
-  console.log("\nReq: \n", req);
+  console.log("\nReq: \n", request);
    
 	
   const appAi = new ApiAiApp({request: request, response: response});
