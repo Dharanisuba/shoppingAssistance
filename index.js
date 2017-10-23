@@ -48,7 +48,7 @@ app.post('/helloHttp', function(request, response) {
 app.get('/', function(request, response) {
 	console.log("Inside get");
   console.log("New deployment method")
-//  response.sendStatus(200);
+  response.sendStatus(200);
 });
 app.get('/setupGetStartedButton',function(req,res){
     setupGetStartedButton(res);
